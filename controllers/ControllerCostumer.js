@@ -15,7 +15,7 @@ class ControllerCostumer{
     }
 
     static formRegistrasi(req,res){
-        res.render('costumers/add.ejs', err = null)
+        res.render('costumers/add.ejs', {err: null})
     }
 
     static registrasi(req,res){
@@ -32,8 +32,9 @@ class ControllerCostumer{
     static formEdit(req,res){
         let id=req.params.id
         Costumer.findById(id)
-        .then((costumer)=>{
-            res.send(costumer)
+        .then((data)=>{
+            res.render('costumers/edit.ejs', {data, err: null, id: id});
+            // res.send(costumer);
         })
         .catch((err)=>{
             res.send(err.message)
@@ -53,7 +54,8 @@ class ControllerCostumer{
             res.redirect('/costumers')
         })
         .catch((err)=>{
-            res.send('Sorry,error while edit costumer data, please contact developer')
+            // res.send(err)
+            res.render('costumers/edit.ejs', {err, data, id: id});
         })
     }
     static delete(req,res){
