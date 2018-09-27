@@ -4,7 +4,7 @@ const bodyParser=require('body-parser')
 
 //configuration
 app.set('view engine','ejs')
-app.use(bodyParser.urlencoded({extended:fase}))
+app.use(bodyParser.urlencoded({extended:true}))
 app.use(bodyParser.json())
 
 //routes
