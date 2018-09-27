@@ -24,7 +24,22 @@ class ControllerProject{
 
     }
     static formRegistrasi(req,res){
-        res.send('Form Registrasi')
+        let data={
+            categories:null,
+            fiturs:null
+        }
+       Category.findAll()
+       .then((categories)=>{
+           data.categories=categories
+           return Fitur.findAll()
+        })
+        .then((fiturs)=>{
+            data.fiturs=fiturs
+            res.send(data)
+        })
+        .catch( (err)=>{
+            res.send(`Sorry, error while open form registrasi project, please contact developer`)
+        })
     }
     static registrasi(req,res){
         let data=req.body
