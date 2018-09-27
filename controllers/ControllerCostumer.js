@@ -25,3 +25,5 @@ class ControllerCostumer{
 
     }
 }
+
+module.exports = ControllerCostumer;

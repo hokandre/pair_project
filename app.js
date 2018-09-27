@@ -4,7 +4,7 @@ const bodyParser=require('body-parser')
 
 //configuration
 app.set('view engine','ejs')
-app.use(bodyParser.urlencoded({extended:fase}))
+app.use(bodyParser.urlencoded({extended:true}))
 app.use(bodyParser.json())
 
 //routes
@@ -17,4 +17,8 @@ app.use('/costumers',RoutesCostumer)
 //connection
 app.listen(port,(req,res)=>{
     console.log(`Server Connected on port ${port}`)
-})
+});
+
+app.get('/', function(req, res) {
+    res.render('index.ejs');
+});
