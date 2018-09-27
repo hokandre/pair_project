@@ -29,3 +29,7 @@ app.listen(port,(req,res)=>{
 app.get('/', function(req, res) {
     res.render('index.ejs');
 });
+
+app.get('/main', function(req, res) {
+    res.render('main.ejs');
+});
