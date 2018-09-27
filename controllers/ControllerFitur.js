@@ -18,7 +18,7 @@ class ControllerFitur{
     }
     static registrasi(req,res){
         let data=req.body
-        Fitur.create()
+        Fitur.create(data)
         .then((s)=>{
             res.redirect('/Fiturs')
         })

@@ -18,7 +18,7 @@ class ControllerCategory{
     }
     static registrasi(req,res){
         let data=req.body
-        Category.create()
+        Category.create(data)
         .then((s)=>{
             res.redirect('/Categorys')
         })

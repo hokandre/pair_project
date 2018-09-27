@@ -18,7 +18,7 @@ class ControllerUser{
     }
     static registrasi(req,res){
         let data=req.body
-        User.create()
+        User.create(data)
         .then((s)=>{
             res.redirect('/Users')
         })
