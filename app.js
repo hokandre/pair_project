@@ -9,11 +9,12 @@ app.use(bodyParser.json())
 
 //routes
 const RoutesCostumer = require('./routes/RoutesCostumer')
-
+const RoutesCategory=require('./routes/RoutesCategory')
 
 
 //midleware routes
 app.use('/costumers',RoutesCostumer)
+app.use('/category',RoutesCategory)
 //connection
 app.listen(port,(req,res)=>{
     console.log(`Server Connected on port ${port}`)
