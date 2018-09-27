@@ -6,6 +6,9 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Project.associate = function(models) {
     // associations can be defined here
+    Project.belongsTo(models.Category)
+    Project.belongsToMany(models.Fitur,{through:'Project_Fitur'})
+    Project.belongsTo(models.Costumer)
   };
   return Project;
 };

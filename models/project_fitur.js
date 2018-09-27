@@ -10,6 +10,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Project_Fitur.associate = function(models) {
     // associations can be defined here
+    Project_Fitur.belongsTo(models.User)
   };
   return Project_Fitur;
 };
