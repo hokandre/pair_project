@@ -9,7 +9,9 @@ module.exports = {
         UserId:1,
         StartDate:new Date(),
         FinishDate:new Date(),
-        Status:true
+        Status:true,
+        createdAt:new Date(),
+        updatedAt:new Date()
       },
       {
         ProjectId:1,
@@ -17,7 +19,9 @@ module.exports = {
         UserId:1,
         StartDate:new Date(),
         FinishDate:null,
-        Status:false
+        Status:false,
+        createdAt:new Date(),
+        updatedAt:new Date()
       },
       {
         ProjectId:1,
@@ -25,7 +29,9 @@ module.exports = {
         UserId:2,
         StartDate:new Date(),
         FinishDate:null,
-        Status:false
+        Status:false,
+        createdAt:new Date(),
+        updatedAt:new Date()
       }
   ], {});
     /*
