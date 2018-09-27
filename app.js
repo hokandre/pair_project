@@ -17,4 +17,8 @@ app.use('/costumers',RoutesCostumer)
 //connection
 app.listen(port,(req,res)=>{
     console.log(`Server Connected on port ${port}`)
-})
+});
+
+app.get('/', function(req, res) {
+    res.render('index.ejs');
+});
