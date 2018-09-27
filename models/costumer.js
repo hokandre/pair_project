@@ -1,7 +1,16 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const Costumer = sequelize.define('Costumer', {
-    Nama: DataTypes.STRING,
+    Nama:
+    { 
+      type:DataTypes.STRING,
+      validate:{
+        notEmpty:{
+          args:true,
+          msg:'mohon mengisi data nama Anda'
+        }
+      }
+    },
     Alamat:
     {
       type:DataTypes.STRING,
