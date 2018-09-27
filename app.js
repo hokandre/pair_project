@@ -10,17 +10,10 @@ app.use(bodyParser.json())
 //routes
 const RoutesCostumer = require('./routes/RoutesCostumer')
 const RoutesCategory=require('./routes/RoutesCategory')
-const RoutesUser=require('./routes/RoutesUser')
-const RoutesFitur=require('./routes/RoutesFitur')
-const RoutesProject=require('./routes/RoutesProject')
 
 //midleware routes
 app.use('/costumers',RoutesCostumer)
-app.use('/categorys',RoutesCategory)
-app.use('/users',RoutesUser)
-app.use('/fiturs',RoutesFitur)
-app.use('/projects',RoutesProject)
-
+app.use('/category',RoutesCategory)
 
 //connection
 app.listen(port,(req,res)=>{
