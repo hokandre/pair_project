@@ -6,16 +6,18 @@ class ControllerCostumer{
            order:['id']
        })
        .then((costumers)=>{
-           res.send(costumers)
+           res.render('costumers/list.ejs', {costumers})
        })   
        .catch((err)=>{
            res.send(`sorry, Error While Read Costumer, Contact Developer.`)
        })
 
     }
+
     static formRegistrasi(req,res){
-        res.send('Form Registrasi')
+        res.render('costumers/add.ejs', err = null)
     }
+
     static registrasi(req,res){
         let data=req.body
         Costumer.create(data)
@@ -23,7 +25,8 @@ class ControllerCostumer{
             res.redirect('/costumers')
         })
         .catch( (err)=>{
-            res.send(err.message)
+            res.render('costumers/add.ejs', {err});
+            // res.send(err)
         })
     }
     static formEdit(req,res){
