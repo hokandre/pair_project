@@ -7,7 +7,7 @@ routes.post('/registrasi',ControllerFitur.registrasi)
 routes.get('/edit/:id',ControllerFitur.formEdit)
 routes.post('/edit/:id',ControllerFitur.edit)
 routes.get('/delete/:id',ControllerFitur.delete)
-
+routes.get('/show-time-estimate',ControllerFitur.showTimeEstimate)
 
 
 
