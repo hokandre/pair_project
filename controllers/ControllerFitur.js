@@ -65,13 +65,12 @@ class ControllerFitur{
     }
     static showTimeEstimate(req,res){
         let data=[]
-        Fitur.findAll({attributes:['id','Nama']})
+        Fitur.findAll({
+            attributes:['id','Nama']})
         .then((fitursId)=>{
-            fitursId.forEach(number=>{
-              number.getProject_Fitur()
-              .then()
-            })
-           res.send(data)
+                fitursId.forEach(number=>{
+                    return Project_Fitur.findAll({where:{FiturId:number.id}})
+                })
         })
         .catch((err)=>{
             res.send(err.message)

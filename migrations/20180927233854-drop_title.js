@@ -13,6 +13,9 @@ module.exports = {
   },
 
   down: (queryInterface, Sequelize) => {
+    return queryInterface.addColumn('Projects','title',{
+      type:Sequelize.STRING
+    })
     /*
       Add reverting commands here.
       Return a promise to correctly handle asynchronicity.
