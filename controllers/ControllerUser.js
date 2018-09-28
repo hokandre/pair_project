@@ -64,6 +64,29 @@ class ControllerUser{
         })
     }
 
+    static formLogin(req,res){
+        let msg = {msg: ''}
+        res.render('index.ejs', msg);
+    }
+
+    static cekLogin(req,res){
+        let data=req.body
+        User.findOne({
+            where: {Email: data.Email, Password: data.Password}
+        })
+        .then((User)=>{
+            if(!User) {
+                res.render('index.ejs', {msg: 'Email / Password Salah'});
+            }
+            // req.session.emailSession = data.Email;
+            res.send(data.Email)
+            // res.redirect('/main');
+        })
+        .catch((err)=>{
+            res.send('error hubungi  administrator')
+        })
+    }
+
 }
 module.exports=ControllerUser
 
