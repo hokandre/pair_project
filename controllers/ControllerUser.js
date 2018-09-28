@@ -9,6 +9,7 @@ class ControllerUser{
             res.render('users/list.ejs', {users})
        })   
        .catch((err)=>{
+           res.send(err.message)
            res.send(`sorry, Error While Read User, Contact Developer.`)
        })
 
@@ -60,6 +61,7 @@ class ControllerUser{
             res.redirect('/users')
         })
         .catch((err)=>{
+            res.send(err.message)
             res.send('Sorry, error while delete User, please contact developer')
         })
     }

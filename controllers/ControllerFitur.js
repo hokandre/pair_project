@@ -1,5 +1,5 @@
 const {Fitur}=require('../models/index')
-
+const {Project_Fitur}=require('../models/index')
 class ControllerFitur{
     static read(req,res){
        Fitur.findAll({
@@ -61,6 +61,20 @@ class ControllerFitur{
         })
         .catch((err)=>{
             res.send('Sorry, error while delete Fitur, please contact developer')
+        })
+    }
+    static showTimeEstimate(req,res){
+        let data=[]
+        Fitur.findAll({attributes:['id','Nama']})
+        .then((fitursId)=>{
+            fitursId.forEach(number=>{
+              number.getProject_Fitur()
+              .then()
+            })
+           res.send(data)
+        })
+        .catch((err)=>{
+            res.send(err.message)
         })
     }
 
