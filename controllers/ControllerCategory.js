@@ -5,8 +5,8 @@ class ControllerCategory{
        Category.findAll({
            order:['id']
        })
-       .then((Categorys)=>{
-           res.send(Categorys)
+       .then((categorys)=>{
+        res.render('categorys/list.ejs', {categorys})
        })   
        .catch((err)=>{
            res.send(`sorry, Error While Read Category, Contact Developer.`)
@@ -14,23 +14,23 @@ class ControllerCategory{
 
     }
     static formRegistrasi(req,res){
-        res.send('Form Registrasi')
+        res.render('categorys/add.ejs', {err: null})
     }
     static registrasi(req,res){
         let data=req.body
         Category.create(data)
         .then((s)=>{
-            res.redirect('/Categorys')
+            res.redirect('/category')
         })
         .catch( (err)=>{
-            res.send(err.message)
+            res.render('categorys/add.ejs', {err});
         })
     }
     static formEdit(req,res){
         let id=req.params.id
         Category.findById(id)
-        .then((Category)=>{
-            res.send(Category)
+        .then((data)=>{
+            res.render('categorys/edit.ejs', {data, err: null, id: id});
         })
         .catch((err)=>{
             res.send(err.message)
@@ -47,17 +47,17 @@ class ControllerCategory{
                 res.send('Data Category Tidak Ditemukan <bypass url>')
             }})
         .then((succes)=>{
-            res.redirect('/Categorys')
+            res.redirect('/category')
         })
         .catch((err)=>{
-            res.send('Sorry,error while edit Category data, please contact developer')
+            res.render('categorys/edit.ejs', {err, data, id: id});
         })
     }
     static delete(req,res){
         let id=req.params.id
         Category.destroy({where:{id:id}})
         .then( (succes)=>{
-            res.redirect('/Categorys')
+            res.redirect('/category')
         })
         .catch((err)=>{
             res.send('Sorry, error while delete Category, please contact developer')

@@ -5,8 +5,8 @@ class ControllerFitur{
        Fitur.findAll({
            order:['id']
        })
-       .then((Fiturs)=>{
-           res.send(Fiturs)
+       .then((fiturs)=>{
+        res.render('fiturs/list.ejs', {fiturs})
        })   
        .catch((err)=>{
            res.send(`sorry, Error While Read Fitur, Contact Developer.`)
@@ -14,23 +14,23 @@ class ControllerFitur{
 
     }
     static formRegistrasi(req,res){
-        res.send('Form Registrasi')
+        res.render('fiturs/add.ejs', {err: null})
     }
     static registrasi(req,res){
         let data=req.body
         Fitur.create(data)
         .then((s)=>{
-            res.redirect('/Fiturs')
+            res.redirect('/fiturs')
         })
         .catch( (err)=>{
-            res.send(err.message)
+            res.render('fiturs/add.ejs', {err});
         })
     }
     static formEdit(req,res){
         let id=req.params.id
         Fitur.findById(id)
-        .then((Fitur)=>{
-            res.send(Fitur)
+        .then((data)=>{
+            res.render('fiturs/edit.ejs', {data, err: null, id: id});
         })
         .catch((err)=>{
             res.send(err.message)
@@ -47,17 +47,17 @@ class ControllerFitur{
                 res.send('Data Fitur Tidak Ditemukan <bypass url>')
             }})
         .then((succes)=>{
-            res.redirect('/Fiturs')
+            res.redirect('/fiturs')
         })
         .catch((err)=>{
-            res.send('Sorry,error while edit Fitur data, please contact developer')
+            res.render('fiturs/edit.ejs', {err, data, id: id});
         })
     }
     static delete(req,res){
         let id=req.params.id
         Fitur.destroy({where:{id:id}})
         .then( (succes)=>{
-            res.redirect('/Fiturs')
+            res.redirect('/fiturs')
         })
         .catch((err)=>{
             res.send('Sorry, error while delete Fitur, please contact developer')

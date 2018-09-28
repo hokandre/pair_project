@@ -8,6 +8,7 @@ app.use(bodyParser.urlencoded({extended:true}))
 app.use(bodyParser.json())
 
 //routes
+const RoutesLogin = require('./routes/RoutesLogin')
 const RoutesCostumer = require('./routes/RoutesCostumer')
 const RoutesCategory=require('./routes/RoutesCategory')
 const RoutesUser=require('./routes/RoutesUser')
@@ -15,6 +16,8 @@ const RoutesFitur=require('./routes/RoutesFitur')
 const RoutesProject=require('./routes/RoutesProject')
 
 //midleware routes
+app.use('/',RoutesLogin)
+
 
 app.use('/costumers',RoutesCostumer)
 app.use('/category',RoutesCategory)
@@ -27,6 +30,6 @@ app.listen(port,(req,res)=>{
     console.log(`Server Connected on port ${port}`)
 });
 
-app.get('/', function(req, res) {
-    res.render('index.ejs');
+app.get('/main', function(req, res) {
+    res.render('main.ejs');
 });
